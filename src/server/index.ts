@@ -4,6 +4,7 @@ import helmet from 'helmet';
 import rateLimit from 'express-rate-limit';
 import dotenv from 'dotenv';
 import cron from 'node-cron';
+import path from 'path';
 
 import { testConnection } from './database/connection';
 import { logger } from './utils/logger';
@@ -16,6 +17,9 @@ dotenv.config();
 
 const app = express();
 const PORT = process.env.PORT || 5000;
+
+// Serve static files from the React build
+app.use(express.static(path.join(__dirname, '../client')));
 
 // Initialize services
 const automationProcessor = new AutomationProcessor();
@@ -119,12 +123,18 @@ app.use((err: any, req: express.Request, res: express.Response, next: express.Ne
   });
 });
 
-// 404 handler
-app.use('*', (req, res) => {
-  res.status(404).json({
-    success: false,
-    error: 'Endpoint not found',
-  });
+// Serve React app for all non-API routes
+app.get('*', (req, res) => {
+  // Skip API routes
+  if (req.path.startsWith('/api/')) {
+    return res.status(404).json({
+      success: false,
+      error: 'API endpoint not found',
+    });
+  }
+  
+  // Serve React app
+  res.sendFile(path.join(__dirname, '../client/index.html'));
 });
 
 // Schedule automation processing (every minute)

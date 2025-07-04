@@ -213,6 +213,17 @@ The platform provides comprehensive analytics:
 
 ## 🚀 Deployment
 
+### Railway Deployment (Recommended)
+
+The easiest way to deploy your Smart Task Automation Engine is using Railway:
+
+1. **Connect Repository**: Link your GitHub repository to Railway
+2. **Add PostgreSQL**: Railway will automatically provision a database
+3. **Configure Variables**: Set environment variables in Railway dashboard
+4. **Deploy**: Railway will automatically build and deploy your app
+
+For detailed instructions, see [RAILWAY_DEPLOYMENT.md](./RAILWAY_DEPLOYMENT.md)
+
 ### Production Build
 ```bash
 npm run build
@@ -234,6 +245,8 @@ docker run -p 5000:5000 automation-engine
 - Set up external service API keys
 - Configure proper JWT secret
 - Set up SSL certificates
+
+See `railway.env.example` for Railway-specific configuration.
 
 ## 🤝 Contributing
 

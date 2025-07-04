@@ -25,6 +25,16 @@ export default defineConfig({
   },
   build: {
     outDir: 'dist/client',
-    sourcemap: true
+    sourcemap: true,
+    rollupOptions: {
+      output: {
+        manualChunks: {
+          vendor: ['react', 'react-dom'],
+          router: ['react-router-dom'],
+          charts: ['recharts'],
+          forms: ['react-hook-form']
+        }
+      }
+    }
   }
 }) 
