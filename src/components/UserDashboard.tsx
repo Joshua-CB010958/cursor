@@ -13,7 +13,7 @@ const UserDashboard: React.FC<UserDashboardProps> = ({
   const [localUser, setLocalUser] = useState<User | undefined>(user);
   const [localMetrics, setLocalMetrics] = useState<DashboardMetrics | undefined>(metrics);
   const [localDailyActivity, setLocalDailyActivity] = useState<DailyActivity[] | undefined>(dailyActivity);
-  const [localIsLoading, setLocalIsLoading] = useState<boolean>(isLoading);
+  const [localIsLoading] = useState<boolean>(isLoading);
 
   // Mock data for demonstration
   useEffect(() => {
