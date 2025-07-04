@@ -11,7 +11,6 @@
     "build:server": "tsc -p tsconfig.server.json",
     "build:client": "vite build",
     "start": "node dist/server/start.js",
-    "postinstall": "npm run build",
     "test": "jest",
     "test:watch": "jest --watch",
     "test:coverage": "jest --coverage",

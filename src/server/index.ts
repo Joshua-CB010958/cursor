@@ -9,7 +9,7 @@ import path from 'path';
 import { testConnection } from './database/connection';
 import { logger } from './utils/logger';
 import automationRoutes from './routes/automations';
-import { AutomationProcessor } from './services/automationProcessor';
+// import { AutomationProcessor } from './services/automationProcessor';
 import { StripeService } from './services/stripeService';
 
 // Load environment variables
@@ -22,7 +22,7 @@ const PORT = process.env.PORT || 5000;
 app.use(express.static(path.join(__dirname, '../client')));
 
 // Initialize services
-const automationProcessor = new AutomationProcessor();
+// const automationProcessor = new AutomationProcessor();
 const stripeService = new StripeService();
 
 // Security middleware
@@ -82,7 +82,7 @@ app.post('/api/webhooks/stripe', express.raw({ type: 'application/json' }), asyn
     const event = stripeService.verifyWebhookSignature(req.body, signature);
     
     // Process the webhook with automation processor
-    await automationProcessor.processStripeWebhook(event);
+    // await automationProcessor.processStripeWebhook(event);
     
     res.json({ success: true });
   } catch (error) {
@@ -138,13 +138,13 @@ app.get('*', (req, res) => {
 });
 
 // Schedule automation processing (every minute)
-cron.schedule('* * * * *', async () => {
-  try {
-    await automationProcessor.processReadyAutomations();
-  } catch (error) {
-    logger.error('Scheduled automation processing failed:', error);
-  }
-});
+// cron.schedule('* * * * *', async () => {
+//   try {
+//     await automationProcessor.processReadyAutomations();
+//   } catch (error) {
+//     logger.error('Scheduled automation processing failed:', error);
+//   }
+// });
 
 // Start server
 async function startServer() {
