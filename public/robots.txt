@@ -1,0 +1,8 @@
+User-agent: *
+Allow: /
+
+# Disallow API endpoints
+Disallow: /api/
+Disallow: /health
+
+Sitemap: https://your-domain.com/sitemap.xml 

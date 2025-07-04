@@ -16,4 +16,8 @@ coverage
 logs
 dist
 .DS_Store
-Thumbs.db 
+Thumbs.db
+.env.example
+railway.env.example
+RAILWAY_DEPLOYMENT.md
+Dockerfile.railway 

@@ -18,7 +18,8 @@
     "db:migrate": "drizzle-kit migrate",
     "db:generate": "drizzle-kit generate",
     "db:studio": "drizzle-kit studio",
-    "db:migrate:prod": "ts-node src/server/database/migrate.ts"
+    "db:migrate:prod": "ts-node src/server/database/migrate.ts",
+    "deploy:railway": "chmod +x scripts/deploy-railway.sh && ./scripts/deploy-railway.sh"
   },
   "dependencies": {
     "express": "^4.18.2",

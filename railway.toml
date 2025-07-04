@@ -9,4 +9,7 @@ restartPolicyType = "on_failure"
 restartPolicyMaxRetries = 3
 
 [[services]]
-name = "smart-task-automation-engine" 
+name = "smart-task-automation-engine"
+
+[build.environment]
+NODE_ENV = "production" 
